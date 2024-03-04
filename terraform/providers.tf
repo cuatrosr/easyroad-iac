@@ -2,8 +2,8 @@ terraform {
   backend "azurerm" {
     resource_group_name  = var.state_resource_group_name
     storage_account_name = var.state_storage_account_name
-    container_name       = "fts-easyroad"
-    key                  = "fts-terraform.tfstate"
+    container_name       = "auto-twitter"
+    key                  = "auto-terraform.tfstate"
   }
   required_providers {
     azurerm = {
