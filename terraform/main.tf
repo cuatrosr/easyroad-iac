@@ -59,19 +59,6 @@ module "aks" {
   rg_location = module.rg.rg_location
 }
 
-module "sa" {
-  depends_on  = [module.rg]
-  source      = "./modules/azurerm/storage_account"
-  rg_name     = module.rg.rg_name
-  rg_location = module.rg.rg_location
-}
-
-module "ss" {
-  depends_on = [module.sa]
-  source     = "./modules/azurerm/storage_share"
-  sa_name    = module.sa.sa_name
-}
-
 module "helm" {
   depends_on = [module.aks]
   source     = "./modules/helm/release"
