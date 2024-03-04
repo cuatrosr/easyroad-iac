@@ -46,6 +46,13 @@ module "cr" {
   rg_location = module.rg.rg_location
 }
 
+module "mongo_db" {
+  depends_on  = [module.rg]
+  source      = "./modules/azurerm/cosmosdb_account"
+  rg_name     = module.rg.rg_name
+  rg_location = module.rg.rg_location
+}
+
 module "aks" {
   depends_on  = [module.rg]
   source      = "./modules/azurerm/kubernetes_cluster"
