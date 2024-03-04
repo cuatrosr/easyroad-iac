@@ -17,12 +17,11 @@ module "snet" {
 }
 
 module "ni" {
-  depends_on  = [module.rg, module.snet, module.pubip]
+  depends_on  = [module.rg, module.snet]
   source      = "./modules/azurerm/network_interface"
   rg_name     = module.rg.rg_name
   rg_location = module.rg.rg_location
   sn_id       = module.snet.snet_id
-  pubip_id    = module.pubip.pubip_id
 }
 
 module "nsg" {

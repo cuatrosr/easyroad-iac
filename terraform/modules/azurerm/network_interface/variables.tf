@@ -41,8 +41,3 @@ variable "privip_address_allocation" {
   default     = "Dynamic"
   description = "The allocation method used for the Private IP Address."
 }
-
-variable "pubip_id" {
-  type        = string
-  description = "Reference to a Public IP Address to associate with this NIC."
-}

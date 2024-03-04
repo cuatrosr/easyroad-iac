@@ -8,6 +8,5 @@ resource "azurerm_network_interface" "ni" {
     name                          = var.ni_ip_name
     subnet_id                     = var.sn_id
     private_ip_address_allocation = var.privip_address_allocation
-    public_ip_address_id          = var.pubip_id
   }
 }
