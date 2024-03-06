@@ -52,6 +52,26 @@ module "mongo_db" {
   rg_location = module.rg.rg_location
 }
 
+module "sa" {
+  depends_on  = [module.rg]
+  source      = "./modules/azurerm/storage_account"
+  rg_name     = module.rg.rg_name
+  rg_location = module.rg.rg_location
+}
+
+module "sc" {
+  depends_on = [module.sa]
+  source     = "./modules/azurerm/storage_container"
+  sa_name    = module.sa.sa_name
+}
+
+module "sb" {
+  depends_on = [module.sc]
+  source     = "./modules/azurerm/storage_blob"
+  sa_name    = module.sa.sa_name
+  sc_name    = module.sc.sc_name
+}
+
 module "aks" {
   depends_on  = [module.rg]
   source      = "./modules/azurerm/kubernetes_cluster"
